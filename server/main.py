@@ -8,6 +8,8 @@ app = Flask(__name__)
 wx_appid = config.wx_appid
 wx_secret = config.wx_appid
 
+# http://127.0.0.1:5000/jscode2session?js_code=011WwOZv1HNcai08OB1w1bOVZv1WwOZm
+# https://api.weixin.qq.com/sns/jscode2session?appid=wx4344453f7ef4347b&secret=24bab6cdf0b842d5f91978dd40d1cbea&js_code=011WwOZv1HNcai08OB1w1bOVZv1WwOZm&grant_type=authorization_code
 @app.route('/jscode2session')
 def wx_jscode2session():
 	js_code = request.args.get("js_code")
@@ -32,14 +34,6 @@ def wx_jscode2session():
 		json_data = json.loads('{"server_errcode": -1}')
 		ret_data_str = json.dumps(json_data)
 	return ret_data_str
-	
-@app.route('/register')
-def register():
-	data = json.loads('{}')
-	data['userName'] = request.args.get("userName")
-	data['phoneNum'] = request.args.get("phoneNum")
-	
-	return json.dumps(data)
 	
 if __name__ == '__main__':
 	app.run()

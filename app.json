@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/register/userlogin"
+    "pages/register/authorize", 
+    "pages/register/register"    
   ],
   "window": {
     "backgroundTextStyle": "light",

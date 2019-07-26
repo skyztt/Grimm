@@ -11,6 +11,7 @@ App({
     wx.login({
       success: res => {
         console.log(res.code)
+        // 发送 res.code 到后台换取 openId, sessionKey, unionId
         wx.request({
           url: apiUrl + 'jscode2session?js_code=' + res.code,
           success: function (res) {
@@ -24,14 +25,13 @@ App({
                 confirmText: '确定',
                 success: function(res) {
                   wx.navigateTo({
-                    url: '/pages/register/userlogin',
+                    url: '/pages/register/authorize',
                   })
                 }
               })
             }
           }
-        })
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
+        })        
       }
     })
     // 获取用户信息

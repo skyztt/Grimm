@@ -30,12 +30,7 @@ Page({
         }
       }
     })
-
-    if (this.data.hasUserInfo) {
-      wx.navigateTo({
-        url: './register',
-      })
-    }
+    this.checkJumpToRegisterPage()    
   },
 
   /**
@@ -87,12 +82,22 @@ Page({
 
   },
 
+  checkJumpToRegisterPage : function() {
+    if (this.data.hasUserInfo) {
+      wx.navigateTo({
+        url: './register',
+      })
+    }
+  },
+
   getUserInfo: function (e) {
     console.log(e)
     app.globalData.userInfo = e.detail.userInfo
+    console.log(app.globalData.userInfo)
     this.setData({
       userInfo: e.detail.userInfo,
       hasUserInfo: true
     })
+    this.checkJumpToRegisterPage()
   }
 })
